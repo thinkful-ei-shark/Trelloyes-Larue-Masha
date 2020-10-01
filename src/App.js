@@ -7,12 +7,12 @@ import './App.css';
 class App extends Component {
   state = STORE;
 
-  handleDeleteCard = () =>{
-    console.log('handleDeleteCard');
+  handleDeleteCard = (cardId) =>{
+    console.log('handleDeleteCard', cardId);
   }
 
-  handleAddRandomCard = () => {
-    console.log('handleaddrandomcard');
+  handleAddRandomCard = (listId) => {
+    console.log('handleaddrandomcard', listId);
   }
 
   render() {
@@ -25,6 +25,7 @@ class App extends Component {
           {this.state.lists.map(list => (
             <List
               key={list.id}
+              id={list.id}
               header={list.header}
               cards={list.cardIds.map(id => this.state.allCards[id])}
               handleAddRandomCard={this.handleAddRandomCard}
