@@ -8,7 +8,12 @@ class App extends Component {
   state = STORE;
 
   handleDeleteCard = (cardId) =>{
-    console.log('handleDeleteCard', cardId);
+    let {[cardId]: _, ...theRest} = this.state.allCards;
+    const lists = this.state.lists.map(list => {
+      list.cardIds = list.cardIds.filter(id => id !== cardId);
+      return list;
+    });
+    this.setState({allCards: theRest, lists: lists});
   }
 
   handleAddRandomCard = (listId) => {
